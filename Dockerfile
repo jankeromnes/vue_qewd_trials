@@ -12,7 +12,7 @@ RUN if [ -d "/usr/lib/yottadb" ]; then \
   &&  echo "YottaDB appears to have already been installed - aborting" \
   && return \
   && fi \ 
-  && echo "So far so good" \
+  && echo "So far so good" 
   
 #RUN install_yottadb1.sh
 
