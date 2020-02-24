@@ -8,11 +8,24 @@ USER root
 #RUN cd ~
 #RUN wget https://raw.githubusercontent.com/robtweed/qewd/master/installers/install_yottadb.sh
 #RUN source install_yottadb.sh
-RUN if [ -d "/usr/lib/yottadb" ]; then \
-  &&  echo "YottaDB appears to have already been installed - aborting" \
-  && return \
-  && fi \ 
-  && echo "So far so good" 
+RUN echo 'Preparing environment' \ 
+ && sudo apt-get update \ 
+ && sudo apt-get install -y build-essential libssl-dev dos2unix \ 
+ && sudo apt-get install -y wget gzip openssh-server curl python-minimal libelf1
+
+# YottaDB
+
+ENV ydbversion=r1.24
+
+RUN echo "Installing YottaDB $ydbversion"
+
+RUN mkdir /tmp/tmp # Create a temporary directory for the installer
+RUN cd /tmp/tmp    # and change to it. Next command is to download the YottaDB installer
+RUN wget https://gitlab.com/YottaDB/DB/YDB/raw/master/sr_unix/ydbinstall.sh
+RUN chmod +x ydbinstall.sh # Make the file executable
+  
+ENV gtmroot=/usr/lib/yottadb
+ENV gtmcurrent=$gtmroot/current  
   
 #RUN install_yottadb1.sh
 
