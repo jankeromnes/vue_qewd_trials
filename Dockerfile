@@ -27,6 +27,16 @@ RUN chmod +x ydbinstall.sh # Make the file executable
 ENV gtmroot=/usr/lib/yottadb
 ENV gtmcurrent=$gtmroot/current  
   
+RUN  if [ -e "$gtmcurrent"] ; then mv -v $gtmcurrent $gtmroot/previous_`date -u +%Y-%m-%d:%H:%M:%S` fi
+RUN sudo mkdir -p $gtmcurrent # make sure directory exists for links to current YottaDB
+RUN sudo ./ydbinstall.sh --utf8 default --verbose --linkenv $gtmcurrent --linkexec $gtmcurrent $ydbversion
+RUN echo "Configuring YottaDB $ydbversion"
+  
+ENV gtmprof=$gtmcurrent/gtmprofile
+ENV gtmprofcmd="source $gtmprof"
+ENV $gtmprofcmd
+ENV tmpfile=`mktemp`  
+  
 #RUN install_yottadb1.sh
 
 USER gitpod
