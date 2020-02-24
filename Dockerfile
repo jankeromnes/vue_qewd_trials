@@ -34,7 +34,7 @@ RUN echo "Configuring YottaDB $ydbversion"
   
 ENV gtmprof=$gtmcurrent/gtmprofile
 ENV gtmprofcmd="source $gtmprof"
-ENV $gtmprofcmd
+RUN $gtmprofcmd
 ENV tmpfile=`mktemp`  
   
 #RUN install_yottadb1.sh
