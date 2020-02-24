@@ -7,7 +7,7 @@ USER root
 ## RUN wget https://raw.githubusercontent.com/robtweed/qewd/master/installers/install_yottadb.sh
 RUN cd ~
 RUN wget https://raw.githubusercontent.com/robtweed/qewd/master/installers/install_yottadb.sh
-RUN install_yottadb.sh
+RUN source install_yottadb.sh
 #RUN install_yottadb1.sh
 
 USER gitpod
