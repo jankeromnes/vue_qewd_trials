@@ -11,7 +11,8 @@ USER root
 RUN echo 'Preparing environment' \ 
  && sudo apt-get update \ 
  && sudo apt-get install -y build-essential libssl-dev dos2unix \ 
- && sudo apt-get install -y wget gzip openssh-server curl python-minimal libelf1
+ && sudo apt-get install -y wget gzip openssh-server curl python-minimal libelf1 \
+ && sudo apt-get install libtinfo5
 
 # YottaDB
 
