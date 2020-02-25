@@ -38,6 +38,23 @@ ENV gtmprofcmd="source $gtmprof"
 RUN $gtmprofcmd
 ENV tmpfile=`mktemp`  
   
+RUN if [ `grep -v "$gtmprofcmd" ~/.profile | grep $gtmroot >$tmpfile`] ; then echo "Warning: existing commands referencing $gtmroot in ~/.profile may interfere with setting up environment" ; cat $tmpfile ; fi
+RUN echo 'copying ' $gtmprofcmd ' to profile...'
+RUN echo $gtmprofcmd >> ~/.profile
+
+RUN rm $tmpfile
+RUN unset tmpfile gtmprofcmd gtmprof gtmcurrent gtmroot
+
+RUN echo 'YottaDB has been installed and configured, ready for use'
+RUN echo 'Enter the YottaDB shell by typing the command: gtm  Exit it by typing the command H'  
+
+RUN echo 'Installing QEWD and associated modules'
+RUN cd ~
+RUN mkdir qewd
+RUN cd qewd
+RUN npm install qewd qewd-monitor
+
+  
 #RUN install_yottadb1.sh
 
 USER gitpod
