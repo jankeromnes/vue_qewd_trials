@@ -36,42 +36,42 @@ RUN sudo apt-get update
 #USER gitpod
 
 # Create app directory
-RUN mkdir -p /opt/qewd
-RUN mkdir /opt/qewd/www
-RUN mkdir /opt/qewd/www/qewd-monitor
+RUN sudo mkdir -p /opt/qewd
+RUN sudo mkdir /opt/qewd/www
+RUN sudo mkdir /opt/qewd/www/qewd-monitor
 
 #WORKDIR /opt/qewd
 
 COPY install_yottadb.sh /opt/qewd
 COPY gde.txt /opt/qewd
-RUN chmod +x /opt/qewd/install_yottadb.sh
+RUN sudo chmod +x /opt/qewd/install_yottadb.sh
 
-RUN cd /opt/qewd
+RUN sudo cd /opt/qewd
 
 
 
 # Install YottaDB & NodeM
 
-RUN ["/opt/qewd/install_yottadb.sh"]
+RUN sudo ["/opt/qewd/install_yottadb.sh"]
 
 # Bundle app source
 COPY . /opt/qewd
 
-RUN chmod +x /opt/qewd/ydb
-RUN chmod +x /opt/qewd/backup
-RUN chmod +x /opt/qewd/update_to_r128
+RUN sudo chmod +x /opt/qewd/ydb
+RUN sudo chmod +x /opt/qewd/backup
+RUN sudo chmod +x /opt/qewd/update_to_r128
 
-RUN echo 'YDB installed by now'
+RUN sudo echo 'YDB installed by now'
 
 # move the qewd install stuff down here
 
 # Install app dependencies
 #COPY package.json /opt/qewd
-RUN cd /opt/qewd
-RUN npm install -g npm@latest
-RUN npm install
-RUN npm install module-exists
-RUN npm install mg-dbx
+RUN sudo cd /opt/qewd
+RUN sudo npm install -g npm@latest
+RUN sudo npm install
+RUN sudo npm install module-exists
+RUN sudo npm install mg-dbx
 
 #RUN cp /opt/qewd/node_modules/qewd-monitor/www/bundle.js /opt/qewd/www/qewd-monitor
 #RUN cp /opt/qewd/node_modules/qewd-monitor/www/*.html /opt/qewd/www/qewd-monitor
