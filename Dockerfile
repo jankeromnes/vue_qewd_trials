@@ -11,9 +11,9 @@
 #FROM node:12-stretch
 FROM gitpod/workspace-full:latest
 
-USER root
+#USER root
 
-RUN apt-get update && apt-get install -y \
+RUN sudo apt-get update && apt-get install -y \
   build-essential \
   libssl-dev \
   dos2unix \
@@ -28,10 +28,10 @@ RUN apt-get update && apt-get install -y \
   subversion
 
 RUN echo 'deb http://ftp.debian.org/debian/ buster main' >> /etc/apt/sources.list
-RUN apt-get update
-RUN apt-get -t buster install -y libc6 libncurses6
+RUN sudo apt-get update
+RUN sudo apt-get -t buster install -y libc6 libncurses6
 
-USER gitpod
+#USER gitpod
 
 # Create app directory
 RUN mkdir -p /opt/qewd
