@@ -4,22 +4,9 @@ image:
 
  
 tasks:
- # - before: npm install -g --unsafe-perm node-red && npm install --prefix ./VitalsFaker json-server faker fs
- # - command: gp await-port 8080
- # - before: npm install -g --unsafe-perm node-red
- ##- name: StartUp test & Faker
- ##  init: npm install 
- ##  command: node VitalsFaker/test1  & node VitalsFaker/faker1
-
- ##- name: JSONserver setup
-   #init: npm install --prefix ./VitalsFaker json-server #-g json-server 
- ##  command: json-server VitalsFaker/data3.json -p 8090
- - name: QewdJS setup
- ##  init: >
-   before: echo $PWD && echo " this is a before task "
-   command: >
- #   cd /opt/qewd
- # should alsready be in this source code directory
+- name: QewdJS setup
+  before: echo $PWD && echo " this is a before task "
+  command: >
     echo $PWD &&
     npm install -g npm@latest &&
     npm install &&
@@ -31,10 +18,5 @@ tasks:
     cp /opt/qewd/node_modules/ewd-client/lib/proto/ewd-client.js /opt/qewd/www
     npm start
     #command: npm start
-
-
-
- ports:
+ports:
   - port: 8080 #Qewd
-
- 
