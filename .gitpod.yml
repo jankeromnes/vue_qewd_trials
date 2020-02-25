@@ -6,6 +6,7 @@ image:
 tasks:
 - name: QewdJS setup
   before: echo $PWD && echo " this is a before task "
+  init: cd /opt/qewd && npm install
   command: >
     echo $PWD &&
     cd /opt/qewd &&
