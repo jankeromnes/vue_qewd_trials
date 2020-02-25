@@ -21,7 +21,8 @@ tasks:
    #init: npm install --prefix ./VitalsFaker json-server #-g json-server 
  ##  command: json-server VitalsFaker/data3.json -p 8090
  - name: QewdJS setup
-   init: >
+ ##  init: >
+   command: >
     cd /opt/qewd
     npm install -g npm@latest &&
     npm install &&
@@ -31,7 +32,8 @@ tasks:
     cp /opt/qewd/node_modules/qewd-monitor/www/*.html /opt/qewd/www/qewd-monitor &&
     cp /opt/qewd/node_modules/qewd-monitor/www/*.css /opt/qewd/www/qewd-monitor &&
     cp /opt/qewd/node_modules/ewd-client/lib/proto/ewd-client.js /opt/qewd/www
-    command: npm start
+    npm start
+    #command: npm start
 
  #- name: NodeRed startup
  #  init: cd /workspace/base1/NRed  && npm install
