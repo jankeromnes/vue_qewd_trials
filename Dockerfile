@@ -71,12 +71,19 @@ RUN cd /opt/qewd
 
 USER root
 RUN cd /opt/qewd \
-    && npm install qewd
+    && npm install qewd \
+    && npm install \
+    && npm install module-exists \
+    && npm install mg-dbx \
+    && cp /opt/qewd/node_modules/qewd-monitor/www/bundle.js /opt/qewd/www/qewd-monitor \
+    && cp /opt/qewd/node_modules/qewd-monitor/www/*.html /opt/qewd/www/qewd-monitor \
+    && cp /opt/qewd/node_modules/qewd-monitor/www/*.css /opt/qewd/www/qewd-monitor \
+    && cp /opt/qewd/node_modules/ewd-client/lib/proto/ewd-client.js /opt/qewd/www
 
-RUN npm install -g npm@latest
-RUN npm install 
-RUN npm install module-exists
-RUN npm install mg-dbx
+# RUN npm install -g npm@latest
+# RUN npm install 
+# RUN npm install module-exists
+# RUN npm install mg-dbx
 
 RUN echo 'Done installing to this point - stopping here for now' 
 #RUN cp /opt/qewd/node_modules/qewd-monitor/www/bundle.js /opt/qewd/www/qewd-monitor
