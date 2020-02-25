@@ -52,23 +52,23 @@ RUN ["/opt/qewd/install_yottadb.sh"]
 # Bundle app source
 COPY . /opt/qewd
 
-RUN chmod +x /opt/qewd/ydb
-RUN chmod +x /opt/qewd/backup
-RUN chmod +x /opt/qewd/update_to_r128
+#RUN chmod +x /opt/qewd/ydb
+#RUN chmod +x /opt/qewd/backup
+#RUN chmod +x /opt/qewd/update_to_r128
 
-RUN mkdir /opt/qewd/www
-RUN mkdir /opt/qewd/www/qewd-monitor
+#RUN mkdir /opt/qewd/www
+#RUN mkdir /opt/qewd/www/qewd-monitor
 
-RUN cp /opt/qewd/node_modules/qewd-monitor/www/bundle.js /opt/qewd/www/qewd-monitor
-RUN cp /opt/qewd/node_modules/qewd-monitor/www/*.html /opt/qewd/www/qewd-monitor
-RUN cp /opt/qewd/node_modules/qewd-monitor/www/*.css /opt/qewd/www/qewd-monitor
+#RUN cp /opt/qewd/node_modules/qewd-monitor/www/bundle.js /opt/qewd/www/qewd-monitor
+#RUN cp /opt/qewd/node_modules/qewd-monitor/www/*.html /opt/qewd/www/qewd-monitor
+#RUN cp /opt/qewd/node_modules/qewd-monitor/www/*.css /opt/qewd/www/qewd-monitor
 
-RUN cp /opt/qewd/node_modules/ewd-client/lib/proto/ewd-client.js /opt/qewd/www
+#RUN cp /opt/qewd/node_modules/ewd-client/lib/proto/ewd-client.js /opt/qewd/www
 
-RUN cd /opt/qewd
+#RUN cd /opt/qewd
 
-EXPOSE 8080
+#EXPOSE 8080
 
 # ENTRYPOINT ["/bin/bash", "-l"]
 
-CMD [ "npm", "start" ]
+#CMD [ "npm", "start" ]
