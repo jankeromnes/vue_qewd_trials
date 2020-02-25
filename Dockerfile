@@ -32,9 +32,9 @@ RUN apt-get -t buster install -y libc6 libncurses6
 RUN mkdir -p /opt/qewd
 WORKDIR /opt/qewd
 
-COPY install_yottadbB.sh /opt/qewd
+COPY install_yottadb.sh /opt/qewd
 COPY gde.txt /opt/qewd
-RUN chmod +x /opt/qewd/install_yottadbB.sh
+RUN chmod +x /opt/qewd/install_yottadb.sh
 
 RUN cd /opt/qewd
 
