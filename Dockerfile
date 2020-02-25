@@ -29,32 +29,51 @@ RUN apt-get update
 RUN apt-get -t buster install -y libc6 libncurses6
 
 # Create app directory
-RUN mkdir -p /opt/qewd
+RUN mkdir -p /opt/qewd \
+    && mkdir /opt/qewd/www \
+    && mkdir /opt/qewd/www/qewd-monitor
 #WORKDIR /opt/qewd
 
 COPY install_yottadb.sh /opt/qewd
 COPY gde.txt /opt/qewd
+COPY package.json /opt/qewd
+COPY qewd.js /opt/qewd
+
 RUN chmod +x /opt/qewd/install_yottadb.sh
 
-RUN cd /opt/qewd
+
+#RUN cd /opt/qewd
 
 # Install app dependencies
-COPY package.json /opt/qewd
-RUN npm install -g npm@latest
-RUN npm install
-RUN npm install module-exists
-RUN npm install mg-dbx
 
-# Install YottaDB & NodeM
+RUN cd /opt/qewd \ 
+    && npm install -g npm@latest \
+    && npm install qewd \
+    && npm install \
+    && npm install module-exists \
+    && npm install mg-dbx 
 
 RUN ["/opt/qewd/install_yottadb.sh"]
 
-# Bundle app source
 COPY . /opt/qewd
 
-#RUN chmod +x /opt/qewd/ydb
-#RUN chmod +x /opt/qewd/backup
-#RUN chmod +x /opt/qewd/update_to_r128
+RUN chmod +x /opt/qewd/ydb
+RUN chmod +x /opt/qewd/backup
+RUN chmod +x /opt/qewd/update_to_r128
+
+RUN cp /opt/qewd/node_modules/qewd-monitor/www/bundle.js /opt/qewd/www/qewd-monitor \
+    && cp /opt/qewd/node_modules/qewd-monitor/www/*.html /opt/qewd/www/qewd-monitor \
+    && cp /opt/qewd/node_modules/qewd-monitor/www/*.css /opt/qewd/www/qewd-monitor \
+    && cp /opt/qewd/node_modules/ewd-client/lib/proto/ewd-client.js /opt/qewd/www
+#RUN npm install -g npm@latest
+#RUN npm install
+#RUN npm install module-exists
+#RUN npm install mg-dbx
+
+# Install YottaDB & NodeM
+# Bundle app source
+#COPY . /opt/qewd
+
 
 #RUN mkdir /opt/qewd/www
 #RUN mkdir /opt/qewd/www/qewd-monitor
@@ -65,7 +84,7 @@ COPY . /opt/qewd
 
 #RUN cp /opt/qewd/node_modules/ewd-client/lib/proto/ewd-client.js /opt/qewd/www
 
-#RUN cd /opt/qewd
+RUN cd /opt/qewd
 
 #EXPOSE 8080
 
