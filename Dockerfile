@@ -46,7 +46,7 @@ COPY install_yottadb.sh /opt/qewd
 COPY gde.txt /opt/qewd
 RUN sudo chmod +x /opt/qewd/install_yottadb.sh
 
-RUN sudo cd /opt/qewd
+RUN cd /opt/qewd
 
 
 
