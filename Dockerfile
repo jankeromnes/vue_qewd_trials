@@ -27,7 +27,7 @@ RUN sudo apt-get update && sudo apt-get install -y \
   nano \
   subversion
 
-RUN echo 'deb http://ftp.debian.org/debian/ buster main' >> /etc/apt/sources.list
+RUN sudo echo 'deb http://ftp.debian.org/debian/ buster main' >> /etc/apt/sources.list
 RUN sudo apt-get update
 RUN sudo apt-get -t buster install -y libc6 libncurses6
 
