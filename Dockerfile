@@ -52,7 +52,7 @@ RUN cd /opt/qewd
 
 # Install YottaDB & NodeM
 
-RUN sudo ["/opt/qewd/install_yottadb.sh"]
+RUN ["/opt/qewd/install_yottadb.sh"]
 
 # Bundle app source
 COPY . /opt/qewd
