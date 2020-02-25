@@ -45,8 +45,9 @@ RUN npm install
 RUN npm install module-exists
 RUN npm install mg-dbx
 # adding this install of qewd-monitor & ewd-client as seemed missing
-RUN npm install qewd-monitor
-RUN npm install ewd-client
+# cancelling that as should be picked up by package.json
+#RUN npm install qewd-monitor
+#RUN npm install ewd-client
 
 # Install YottaDB & NodeM
 
