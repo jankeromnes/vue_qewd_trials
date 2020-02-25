@@ -70,10 +70,11 @@ RUN sudo echo 'YDB installed by now'
 RUN cd /opt/qewd
 
 USER gitpod
-RUN cd /opt/qewd
+RUN cd /opt/qewd \
+    && npm install qewd
 
 RUN npm install -g npm@latest
-RUN npm install
+RUN npm install 
 RUN npm install module-exists
 RUN npm install mg-dbx
 
