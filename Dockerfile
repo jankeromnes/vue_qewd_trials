@@ -30,7 +30,7 @@ RUN apt-get -t buster install -y libc6 libncurses6
 
 # Create app directory
 RUN mkdir -p /opt/qewd
-WORKDIR /opt/qewd
+#WORKDIR /opt/qewd
 
 COPY install_yottadb.sh /opt/qewd
 COPY gde.txt /opt/qewd
