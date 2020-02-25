@@ -57,6 +57,7 @@ RUN chmod +x /opt/qewd/update_to_r128
 RUN echo 'YDB installed by now'
 
 # move the qewd install stuff down here
+
 # Install app dependencies
 #COPY package.json /opt/qewd
 #RUN npm install -g npm@latest

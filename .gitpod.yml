@@ -23,7 +23,9 @@ tasks:
  - name: QewdJS setup
  ##  init: >
    command: >
-    cd /opt/qewd
+ #   cd /opt/qewd
+ # should alsready be in this source code directory
+    echo $PWD &&
     npm install -g npm@latest &&
     npm install &&
     npm install module-exists &&
