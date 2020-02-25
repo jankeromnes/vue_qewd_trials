@@ -69,7 +69,7 @@ RUN sudo echo 'YDB installed by now'
 #COPY package.json /opt/qewd
 RUN cd /opt/qewd
 
-USER gitpod
+USER root
 RUN cd /opt/qewd \
     && npm install qewd
 
