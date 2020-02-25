@@ -60,10 +60,11 @@ RUN echo 'YDB installed by now'
 
 # Install app dependencies
 #COPY package.json /opt/qewd
-#RUN npm install -g npm@latest
-#RUN npm install
-#RUN npm install module-exists
-#RUN npm install mg-dbx
+RUN cd /opt/qewd
+RUN npm install -g npm@latest
+RUN npm install
+RUN npm install module-exists
+RUN npm install mg-dbx
 
 #RUN cp /opt/qewd/node_modules/qewd-monitor/www/bundle.js /opt/qewd/www/qewd-monitor
 #RUN cp /opt/qewd/node_modules/qewd-monitor/www/*.html /opt/qewd/www/qewd-monitor
