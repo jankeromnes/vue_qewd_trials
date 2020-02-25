@@ -11,7 +11,7 @@
 #FROM node:12-stretch
 FROM gitpod/workspace-full:latest
 
-USER gitpod
+USER root
 
 RUN apt-get update && apt-get install -y \
   build-essential \
@@ -30,6 +30,8 @@ RUN apt-get update && apt-get install -y \
 RUN echo 'deb http://ftp.debian.org/debian/ buster main' >> /etc/apt/sources.list
 RUN apt-get update
 RUN apt-get -t buster install -y libc6 libncurses6
+
+USER gitpod
 
 # Create app directory
 RUN mkdir -p /opt/qewd
