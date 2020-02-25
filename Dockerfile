@@ -8,7 +8,8 @@
 #FROM node:boron
 #FROM node:carbon
 #FROM node:10-stretch
-FROM node:12-stretch
+#FROM node:12-stretch
+FROM gitpod/workspace-full:latest
 
 USER gitpod
 
