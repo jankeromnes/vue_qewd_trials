@@ -67,12 +67,13 @@ RUN sudo echo 'YDB installed by now'
 
 # Install app dependencies
 #COPY package.json /opt/qewd
-RUN sudo cd /opt/qewd
+RUN cd /opt/qewd
 RUN sudo npm install -g npm@latest
 RUN sudo npm install
 RUN sudo npm install module-exists
 RUN sudo npm install mg-dbx
 
+RUN echo 'Done installing to this point - stopping here for now' 
 #RUN cp /opt/qewd/node_modules/qewd-monitor/www/bundle.js /opt/qewd/www/qewd-monitor
 #RUN cp /opt/qewd/node_modules/qewd-monitor/www/*.html /opt/qewd/www/qewd-monitor
 #RUN cp /opt/qewd/node_modules/qewd-monitor/www/*.css /opt/qewd/www/qewd-monitor
