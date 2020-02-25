@@ -68,6 +68,10 @@ RUN sudo echo 'YDB installed by now'
 # Install app dependencies
 #COPY package.json /opt/qewd
 RUN cd /opt/qewd
+
+USER gitpod
+RUN cd /opt/qewd
+
 RUN npm install -g npm@latest
 RUN npm install
 RUN npm install module-exists
@@ -87,3 +91,4 @@ RUN echo 'Done installing to this point - stopping here for now'
 # ENTRYPOINT ["/bin/bash", "-l"]
 
 #CMD [ "npm", "start" ]
+USER root
