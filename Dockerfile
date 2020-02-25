@@ -29,7 +29,7 @@ RUN sudo apt-get update && sudo apt-get install -y \
 
 RUN sudo echo 'deb http://ftp.debian.org/debian/ buster main' >> sudo /etc/apt/sources.list
 RUN sudo apt-get update
-RUN sudo apt-get -t buster install -y libc6 libncurses6
+RUN apt-get -t buster install -y libc6 libncurses6
 
 #USER gitpod
 
