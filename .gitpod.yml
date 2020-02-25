@@ -1,3 +1,38 @@
 image:
   #file: .gitpod.Dockerfile
   file: Dockerfile
+
+  ports:
+  - port: 8080 #Qewd
+  ##  onOpen: open-preview
+ ## - port: 8050  #VitalsFaker
+ ##   onOpen: ignore
+ ## - port: 8090 #JSONserver
+ ##   onOpen: ignore
+tasks:
+ # - before: npm install -g --unsafe-perm node-red && npm install --prefix ./VitalsFaker json-server faker fs
+ # - command: gp await-port 8080
+ # - before: npm install -g --unsafe-perm node-red
+ ##- name: StartUp test & Faker
+ ##  init: npm install 
+ ##  command: node VitalsFaker/test1  & node VitalsFaker/faker1
+
+ ##- name: JSONserver setup
+   #init: npm install --prefix ./VitalsFaker json-server #-g json-server 
+ ##  command: json-server VitalsFaker/data3.json -p 8090
+ - name: QewdJS setup
+   init: >
+    cd /opt/qewd
+    npm install -g npm@latest &&
+    npm install &&
+    npm install module-exists &&
+    npm install mg-dbx &&
+    cp /opt/qewd/node_modules/qewd-monitor/www/bundle.js /opt/qewd/www/qewd-monitor &&
+    cp /opt/qewd/node_modules/qewd-monitor/www/*.html /opt/qewd/www/qewd-monitor &&
+    cp /opt/qewd/node_modules/qewd-monitor/www/*.css /opt/qewd/www/qewd-monitor &&
+    cp /opt/qewd/node_modules/ewd-client/lib/proto/ewd-client.js /opt/qewd/www
+    command: npm start
+
+ #- name: NodeRed startup
+ #  init: cd /workspace/base1/NRed  && npm install
+ #  command: cd /workspace/base1 && node-red -p 8080 -u ./NRed lib/flows/flowsNR.json
