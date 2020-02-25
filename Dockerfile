@@ -10,6 +10,8 @@
 #FROM node:10-stretch
 FROM node:12-stretch
 
+USER gitpod
+
 RUN apt-get update && apt-get install -y \
   build-essential \
   libssl-dev \
