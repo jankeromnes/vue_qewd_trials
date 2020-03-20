@@ -11,6 +11,8 @@
 #FROM node:12-stretch
 FROM gitpod/workspace-full:latest
 
+ENV RETRIGGER_BUILD=4
+
 #USER root
 
 RUN sudo apt-get update && sudo apt-get install -y \
